@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Barang;
+use App\Models\User;
+use App\Models\Kategori;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +16,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        Barang::create([
+            'nm_barang'     => 'Televisi Sharp',
+            'hrg_beli'      => 1250000,
+            'hrg_jual'      => 1500000,
+            'deskripsi'     => 'Ini adalah deskripsi Televisi Sharp',
+            'kategori_id'   => 1
+        ]);
+        Barang::create([
+            'nm_barang' => 'Laptop Lenovo',
+            'hrg_beli'  => 5500000,
+            'hrg_jual'  => 6500000,
+            'deskripsi' => 'Ini adalah deskripsi laptop Lenovo',
+            'kategori_id'   => 1
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Kategori::create([
+            'kategori'  => 'elektronik'
+        ]);
     }
 }

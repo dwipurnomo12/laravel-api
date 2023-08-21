@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BarangController;
+use App\Http\Controllers\Api\KategoriController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/barang', BarangController::class);
+Route::apiResource('/kategori', KategoriController::class);

@@ -43,8 +43,22 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label>kategori</label>
+                        <select class="form-control @error('kategori_id') is-invalid @enderror" id="kategori_id" name="kategori_id">
+                          <option value=""> -- Pilih Kategori -- </option>
+                          @foreach ($kategories as $kategori)
+                            <option value="{{ $kategori['id'] }}" {{ $data['kategori_id'] == $kategori['id'] ? 'selected' : '' }}> 
+                                {{ $kategori['kategori'] }} 
+                            </option>
+                          @endforeach
+                        </select>
+                        @error('kategori_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                                     
-                    <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                    <button type="submit" class="btn btn-primary float-right">Update</button>
                 </form>
                              
             </div>

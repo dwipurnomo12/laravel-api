@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="section-header">
-    <h1>Data Barang</h1>
+    <h1>Kategori</h1>
     <div class="ml-auto">
-        <a href="barang/create" class="btn btn-primary">Tambah Barang</a>
+        <a href="kategori/create" class="btn btn-primary">Tambah Kategori</a>
     </div>
 </div>
 <div class="row">
@@ -39,30 +39,17 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Barang</th>
-                                <th>Harga Beli</th>
-                                <th>Harga Jual</th>
                                 <th>Kategori</th>
                                 <th>Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dataBarang as $item)
+                            @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item['nm_barang']}}</td>
-                                    <td>Rp. {{ $item['hrg_beli'] }}</td>
-                                    <td>Rp. {{ $item['hrg_jual'] }}</td>
+                                    <td>{{ $item['kategori']}}</td>
                                     <td>
-                                        @foreach ($dataKategori as $kategori)
-                                            @if ($kategori['id'] == $item['kategori_id'])
-                                                {{ $kategori['kategori'] }}
-                                            @endif
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        <a href="/barang/{{ $item['id'] }}" class="btn btn-success">Detail</a>
-                                        <a href="/barang/{{ $item['id'] }}/edit" class="btn btn-warning">Edit</a>
+                                        <a href="/kategori/{{ $item['id'] }}/edit" class="btn btn-warning">Edit</a>
                                         <button class="btn btn-danger delete-button" data-id="{{ $item['id'] }}">Hapus</button>
                                     </td>
                                 </tr>
@@ -100,7 +87,7 @@
                     cancelButtonText: 'Batal',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        fetch(`/api/barang/${id}`, {
+                        fetch(`/api/kategori/${id}`, {
                             method: 'DELETE',
                         })
                         .then(response => response.json())

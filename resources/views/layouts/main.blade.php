@@ -109,11 +109,15 @@
 
               <li class="sidebar-item">
                 <a class="nav-link {{ Request::is('/barang') || Request::is('barang') ? 'active' : '' }}" href="/barang">
-                  <i class="fas fa-fire"></i> <span class="align-middle">Data Barang</span>
+                  <i class="fa fa-solid fa-warehouse"></i> <span class="align-middle">Data Barang</span>
                 </a>
               </li>
 
-
+              <li class="sidebar-item">
+                <a class="nav-link {{ Request::is('/kategori') || Request::is('kategori') ? 'active' : '' }}" href="/kategori">
+                  <i class="fa fa-solid fa-list"></i> <span class="align-middle">Kategori</span>
+                </a>
+              </li>
 
               
           </ul>

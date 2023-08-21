@@ -31,14 +31,16 @@ class BarangController extends Controller
             'nm_barang'     => 'required',
             'hrg_beli'      => 'required|numeric',
             'hrg_jual'      => 'required|numeric',
-            'deskripsi'     => 'required'
+            'deskripsi'     => 'required',
+            'kategori_id'   => 'required'
         ], [
             'nm_barang.required'    => 'Kolom Nama Barang Wajib Diisi !',
             'hrg_beli.required'     => 'Kolom Harga Beli Wajib Diisi !',
             'hrg_beli.numeric'      => 'Gunakan Inputan Hanya Angka',
             'hrg_jual.required'     => 'Kolom Harga Jual Wajib Diisi !',
             'hrg_juaml.numeric'     => 'Gunakan Inputan Hanya Angka',
-            'deskripsi.required'    => 'Kolom Deskripsi Wajib Diisi !'  
+            'deskripsi.required'    => 'Kolom Deskripsi Wajib Diisi !', 
+            'kategori_id.required'  => 'Wajib Memilih Kategori'
         ]);
 
         if($validator->fails()){
@@ -46,10 +48,11 @@ class BarangController extends Controller
         }
 
         $barang = Barang::create([
-            'nm_barang' => $request->nm_barang,
-            'hrg_beli'  => $request->hrg_beli,
-            'hrg_jual'  => $request->hrg_jual,
-            'deskripsi' => $request->deskripsi
+            'nm_barang'     => $request->nm_barang,
+            'hrg_beli'      => $request->hrg_beli,
+            'hrg_jual'      => $request->hrg_jual,
+            'deskripsi'     => $request->deskripsi,
+            'kategori_id'   => $request->kategori_id
         ]);
 
         return response()->json([
@@ -96,14 +99,16 @@ class BarangController extends Controller
             'nm_barang'     => 'required',
             'hrg_beli'      => 'required|numeric',
             'hrg_jual'      => 'required|numeric',
-            'deskripsi'     => 'required'
+            'deskripsi'     => 'required',
+            'kategori_id'   => 'required'
         ], [
             'nm_barang.required'    => 'Kolom Nama Barang Wajib Diisi !',
             'hrg_beli.required'     => 'Kolom Harga Beli Wajib Diisi !',
             'hrg_beli.numeric'      => 'Gunakan Inputan Hanya Angka',
             'hrg_jual.required'     => 'Kolom Harga Jual Wajib Diisi !',
             'hrg_juaml.numeric'     => 'Gunakan Inputan Hanya Angka',
-            'deskripsi.required'    => 'Kolom Deskripsi Wajib Diisi !'  
+            'deskripsi.required'    => 'Kolom Deskripsi Wajib Diisi !',
+            'kategori_id.required'  => 'Wajib Memilih kategori'  
         ]);
 
         if($validator->fails()){
@@ -115,6 +120,7 @@ class BarangController extends Controller
             'hrg_beli'      => $request->hrg_beli,
             'hrg_jual'      => $request->hrg_jual,
             'deskripsi'     => $request->deskripsi,
+            'kategori_id'   => $request->kategori_id
         ]);
         
         return response()->json([
@@ -139,7 +145,7 @@ class BarangController extends Controller
             } else {
                 return response()->json([
                     'status'    => false,
-                    'mesage'    => 'Add Data Failed'
+                    'mesage'    => 'Delete Data Failed'
                 ], 500);
             }
         } else {
