@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/login', [AuthController::class, 'loginForm']);
 
 Route::resource('/barang', BarangController::class);
 Route::resource('/kategori', KategoriController::class);
